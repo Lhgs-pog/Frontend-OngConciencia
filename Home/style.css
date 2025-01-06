@@ -1,0 +1,29 @@
+
+#barra{
+    padding-left: 400px;
+}
+
+#nave{
+    background-color: #90aeff;
+}
+
+#btn-pesquisa{
+    background-color: #000;
+    color: wheat;
+}
+
+#footer{
+    background-color: #cefc86;
+}
+
+.a{
+    color: white;
+    background-color: #648bf8;
+    padding: 10px 0 px;
+    margin: 10px;
+}
+
+.a:hover{
+    color: #000;
+    background-color: white;
+}
