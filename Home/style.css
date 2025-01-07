@@ -1,29 +1,74 @@
 
-#barra{
-    padding-left: 400px;
+#copyright{
+    color: #000;
+}
+
+#email-contato{
+    color: #000;
+}
+
+#quem-somos{
+    color: #000;
 }
 
 #nave{
-    background-color: #90aeff;
+    background-image: linear-gradient(to right, #90aeff, #60efb8, #cefc86);
+    
 }
 
 #btn-pesquisa{
     background-color: #000;
-    color: wheat;
+    color: white;
+}
+
+#btn-pesquisa:hover{
+    background-color: white;
+    color: #000;
+    transform: scale(1.05);
+}
+
+.img-carrosel{
+    width: 100vw;
+    height: 375px;
+}
+
+.carrosel-text{
+    color: white;
+    background-color: #000;
+    display: inline;
+}
+
+#area-de-conteudo{
+    border-radius: 10px;
+    background-image: linear-gradient( 135deg, #90aeff, #60efb8, #cefc86);
+}
+
+.cards{
+    padding: opx;
+}
+
+.card-img{
+    max-width: 284px;
+    max-height: 177px;
 }
 
 #footer{
     background-color: #cefc86;
+    position: relative;
+    left: opx;
+    bottom: 100%;
 }
 
 .a{
     color: white;
-    background-color: #648bf8;
+    background-color: black;
     padding: 10px 0 px;
     margin: 10px;
+    border-radius: 10px;
 }
 
 .a:hover{
     color: #000;
     background-color: white;
+    transform: scale(1.05);
 }

@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: #90aeff;">
+<!--BARRA DE NAVEGAÇÃO-->
+    <nav class="navbar navbar-expand-lg" id="nave">
         <div class="container-fluid" id="nave">
           <a class="navbar-brand" href="#">Ong Conciência</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,7 +17,7 @@
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <form class="d-flex" role="search" >
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control me-2" type="search" placeholder="Pesquise uma ong" aria-label="Search">
               <button class="btn btn-outline-success" type="submit" id="btn-pesquisa">Search</button>
             </form>
             <ul class="nav justify-content-end">
@@ -29,34 +30,129 @@
             </ul>
           </div>
         </div>
-      </nav>
+    </nav>
+
+<!--CARROUSEL-->
+    <div id="carouselExampleCaptions" class="carousel slide" style=" padding-top: 30px; padding-bottom: 30px;">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="carrosel1.jfif" class="d-block w-100 img-carrosel" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5 class="carrosel-text">First slide label <br></h5>
+            <p class="carrosel-text">Some representative placeholder content for the first slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="carrosel2.jfif" class="d-block w-100 img-carrosel" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5 class="carrosel-text">Second slide label <br></h5>
+            <p class="carrosel-text">Some representative placeholder content for the second slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="carrousel3.jfif" class="d-block w-100 img-carrosel" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5 class="carrosel-text">Third slide label <br></h5>
+            <p class="carrosel-text">Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    
+<!--Exibiçãao dos cards para as ONGs-->
+    <div class="container">
+      <div class="row" id="area-de-conteudo">
+        <div class="col-4">
+          <!--CARD 1-->
+          <div class="card cards" style="width: 18rem;" >
+            <img src="MSF.png" class="card-img-top card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Médicos Sem Froteiras (MSF)</h5>
+              <p class="card-text">Uma organização humanitária médica internacional que presta assistência a pessoas afetadas por conflitos, epidemias, desastres naturais ou exclusão do acesso à saúde.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Email: doador@msf.org.br</li>
+              <li class="list-group-item">Telefone: 0800 940 3585</li>
+              <li class="list-group-item">Avaliação: 5 stars</li>
+            </ul>
+            <div class="card-body">
+              <a href="https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwjF0qfE6OOKAxWuXkgAHQvhEVAYABAAGgJjZQ&ae=2&aspm=1&co=1&ase=2&gclid=Cj0KCQiAvvO7BhC-ARIsAGFyToUGonI7m4A_gGIpog_XhKfFpoN2bKifvlcbLohoFDqo0gXdWBJplKYaAgGvEALw_wcB&ohost=www.google.com&cid=CAESVuD2BpjfX5Ra_nXskHyusXwS43ffmOuZ7LpYywBJyoWAPJpPnGQPStr8_gzlOF4MW0yAk03t2cvR4nn7pMyDWFF3hLwB7qcWr_fdOO3AoLaf4k23_mBN&sig=AOD64_0JhXKuu7WnXorfpUGPNNUGUSQrTQ&q&nis=4&adurl&ved=2ahUKEwiruqHE6OOKAxWSjJUCHbPTGQQQ0Qx6BAgKEAE" class="card-link">Ir para a instituição</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <!--Card 2-->
+          <div class="card cards" style="width: 18rem;">
+            <img src="greenpeace.png" class="card-img-top card-img" alt="greenpeace">
+            <div class="card-body">
+              <h5 class="card-title">Greenpece</h5>
+              <p class="card-text">O Greenpeace utiliza ação direta, lobby e pesquisa para atingir seus objetivos de garantir a capacidade da Terra de nutrir a vida em toda a sua diversidade.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Email: relacionamento@greenpeace.org</li>
+              <li class="list-group-item">Telefone:</li>
+              <li class="list-group-item">Avaliação: 4 stars</li>
+            </ul>
+            <div class="card-body">
+              <a href="https://www.greenpeace.org/brasil/" class="card-link">Ir para a instituição</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <!--Card 3-->
+          <div class="card cards" style="width: 18rem;">
+            <img src="anistia.png" class="card-img-top card-img" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Anistia Internacional</h5>
+              <p class="card-text">Uma organização não governamental focada em direitos humanos com o objetivo de "pesquisar e prevenir abusos dos direitos à integridade física e mental, à liberdade de consciência e de expressão e à não discriminação".</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Email: contato@anistia.org.br</li>
+              <li class="list-group-item">Telefone: (21) 31748601</li>
+              <li class="list-group-item">Avaliação: 3,5 stars</li>
+            </ul>
+            <div class="card-body">
+              <a href="https://anistia.org.br/" class="card-link">Ir para a instituição</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--RODAPÉ-->
     <footer class="py-3 my-4" id="footer">
         <div class="container">
             <div class="row">
               <div class="col-6">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                     <li class="nav-item">
-                        <a href="#" class="nav-link px-2 text-muted">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link px-2 text-muted">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link px-2 text-muted">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link px-2 text-muted">Home</a>
+                        <a href="#" id="email-contato" class="nav-link px-2 text-muted">Email contato: exemplo@gmail.com</a>
                     </li>
                 </ul>
-                <p class="text-center text-muted">© 2025 Ong Conciêntização, Inc</p>
+                <p class="text-center text-muted" id="copyright">© 2025 Ong Conciêntização, Inc</p>
               </div>
               <div class="col-6">
-                <P>Quem somos: <br> A Ong Conciêntização tem como missão facilitar a conexão entre pessoas e as ongs de todo o brasil</P>
+                <P id="quem-somos"><b>Quem somos: </b><br> A ONG Conciêntização tem como missão facilitar a conexão entre pessoas e as ONGs de todo o brasil, ajudando aqueles que tem interrese em criar um mundo melhor, mas não sabem como faze-lo.</P>
               </div>
             </div>
           </div>
     </footer>
 
+    <!--Script Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
