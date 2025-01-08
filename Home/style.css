@@ -10,9 +10,11 @@
     
 }
 
+/*  Estilização do botão de pesquisa */
 #btn-pesquisa{
-    background-color: #000;
-    color: white;
+    background-color: transparent;
+    color: black;
+    border-color: transparent;
 }
 
 #btn-pesquisa:hover{
