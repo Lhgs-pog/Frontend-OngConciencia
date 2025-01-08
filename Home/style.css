@@ -11,6 +11,7 @@
     color: #000;
 }
 
+/* NavBar*/
 #nave{
     background-image: linear-gradient(to right, #90aeff, #60efb8, #cefc86);
     
@@ -27,10 +28,18 @@
     transform: scale(1.05);
 }
 
+/* Logo OngConsciencia*/
+.logo {
+    width: 180px; 
+    height: auto; 
+}
+
 .img-carrosel{
     width: 100vw;
     height: 375px;
 }
+
+
 
 .carrosel-text{
     color: white;
