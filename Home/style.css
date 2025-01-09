@@ -1,102 +1,139 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-*{
-    font-family: "Poppins", sans-serif;
-}
+/*Formatação geral da página*/
+    *{
+        font-family: "Poppins", sans-serif;
+    }
+
+    body{
+        background-color: #f9f7f7;
+    }
 
 /* NavBar*/
-#nave{
-    background-image: linear-gradient(to right, #90aeff, #60efb8, #cefc86);
-    
-}
-
-/*  Estilização do botão de pesquisa */
-#btn-pesquisa{
-    background-color: transparent;
+    /*Cor de fundo*/
+    #nave{
+        background-image: linear-gradient(to right, #90aeff, #60efb8, #cefc86);
+        
+        
+    }
+    /* Logo OngConsciencia*/
+    .logo {
+        width: 180px; 
+        height: auto; 
+    }
+    /*  Estilização do botão de pesquisa */
+    #btn-pesquisa{
+        background-color: transparent;
+        color: black;
+        border-color: transparent;
+    }
+    /*Estilização do hover*/
+    #btn-pesquisa:hover{
+        background-color: white;
+        color: #000;
+        transform: scale(1.05);
+    }
+    /* Estilização do link*/
+    .nav-link.a{
+    position: relative;
+    font-size: 18px;
     color: black;
-    border-color: transparent;
-}
-
-#btn-pesquisa:hover{
-    background-color: white;
-    color: #000;
-    transform: scale(1.05);
-}
-
-
-/* Estilização do link*/
-.nav-link.a{
-   position: relative;
-   font-size: 18px;
-   color: black;
-   font-weight: 500;
-   text-decoration: none;
-}
-.nav-link.a::before{
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: white;
-    transition: .5s;
-}
-.nav-link.a:hover::before{
-    width: 100%;
-}
+    font-weight: 500;
+    text-decoration: none;
+    }
+    /*Links para outras páginas*/
+    .nav-link.a::before{
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: white;
+        transition: .5s;
+    }
+    /*Hover do links para outras páginass*/
+    .nav-link.a:hover::before{
+        width: 100%;
+    }
 
 
-/* Logo OngConsciencia*/
-.logo {
-    width: 180px; 
-    height: auto; 
-}
+/* Carrosel */
+    /*imagens*/
+    .img-carrosel{
+        max-width: 90vw;
+        height: 375px;
+        border-radius: 10px;
+    }
+    /*Area carrosel*/
+    #carrosel-div img {
+        display: block;
+        margin: auto;
+      }
+
+    /*texto*/
+    .carrosel-text{
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+        display: inline;
+    }
+    /*Melhora da fonte*/
+    .carousel-caption h5 {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+    /*Melhora do paragrafo*/
+    .carousel-caption p {
+        font-size: 1.2rem;
+    }
 
 
-.img-carrosel{
-    width: 100vw;
-    height: 375px;
-}
+/*Area de apresentação das ongs*/
+    /*Contaainer*/
+    #container-conteudo{
+        background-color: #60efb8;
+    }
+    /*Area de fundo*/
+    #area-de-conteudo{
+        margin-top: 50px;
+        border-radius: 10px;
+        /*background-image: linear-gradient( 135deg, #90aeff, #60efb8, #cefc86);*/
+        background-color: #60efb8;
+        padding-top: 30px;
+        padding-left: 45px;
+        padding-bottom: 30px;
+    }
 
+    /*Configuração dos cars*/
+    .cards{
+        padding: opx;
+    }
 
-.carrosel-text{
-    color: white;
-    background-color: #000;
-    display: inline;
-}
-
-#area-de-conteudo{
-    border-radius: 10px;
-    background-image: linear-gradient( 135deg, #90aeff, #60efb8, #cefc86);
-}
-
-.cards{
-    padding: opx;
-}
-
-.card-img{
-    max-width: 284px;
-    max-height: 177px;
-}
+    /*Configuração das imagens*/
+    .card-img{
+        max-width: 284px;
+        max-height: 177px;
+    }
 
 
 /* Footer */
-#footer{
-    background-color: #cefc86;
-    position: relative;
-    left: opx;
-    bottom: 100%;
-}
+    /*Configuração geral*/
+    #footer{
+        background-color: #cefc86;
+        position: relative;
+        left: opx;
+        bottom: 100%;
+    }
 
-#copyright{
-    color: #000;
-}
+    /* Elementos dentro do footer*/
+        #copyright{
+            color: #000;
+        }
 
-#email-contato{
-    color: #000;
-}
+        #email-contato{
+            color: #000;
+        }
 
-#quem-somos{
-    color: #000;
-}
+        #quem-somos{
+            color: #000;
+        }
