@@ -118,22 +118,79 @@
 
 /* Footer */
     /*Configuração geral*/
-    #footer{
-        background-color: #cefc86;
-        position: relative;
-        left: opx;
-        bottom: 100%;
+    .footer {
+        margin-top: 35px;
+        background: rgb(206,252,134);
+        padding: 20px 0 20px;
+        border-top: 1px solid #eee;
+    }
+    
+    /*Configurações da Div footer-brand*/
+    .footer-brand {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 15px;
     }
 
-    /* Elementos dentro do footer*/
-        #copyright{
-            color: #000;
-        }
-
-        #email-contato{
-            color: #000;
-        }
-
-        #quem-somos{
-            color: #000;
-        }
+    /*Estilização da Logo no footer*/
+    .logo-footer{
+        width: 150px; 
+        height: auto; 
+    }
+    
+    /*Texto de explicação da Ong no footer*/
+    .footer-text {
+        color: #6c757d;
+        font-size: 0.9rem;
+        max-width: 300px;
+    }
+    
+    /*Links das redes sociais*/
+    .social-links {
+        margin: 20px 0;
+    }
+    
+    /*Estilização dos links*/
+    .social-link {
+        color: rgb(12, 12, 12);
+        margin-right: 20px;
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+    }
+    
+    /*Links dos links no hover*/
+    .social-link:hover {
+        color: white;
+    }
+    
+    /* Div footer-links */
+    .footer-links {
+        display: flex;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    
+    /* Links de atalhos do site */
+    .footer-links a {
+        color: rgb(12, 12, 12);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+    }
+    
+    /* Links de atalhos do site */
+    .footer-links a:hover {
+        color: white;
+    }
+    
+    /* Direitos do site */
+    .copyright {
+        color: #6c757d;
+        font-size: 0.85rem;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+    }
