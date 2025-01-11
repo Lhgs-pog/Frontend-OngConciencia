@@ -10,7 +10,7 @@
 
     /* Corpo da página */
     body{
-        background: url(/LoginCadastro/imagens/pexels-irenelasus-88517.jpg);
+        background: url(/LoginCadastro/imagens/pexels-lastly-572688.jpg);
         background-position: center;
         background-size: cover;
         background-attachment: fixed;
@@ -63,7 +63,7 @@
 
     /* Botão Entrar */
     .btn-1{
-        background: #21264D;
+        background: rgb(206, 252, 134);
     }
 
     /* Botão Hover */
@@ -185,7 +185,7 @@
         align-items: center;
         justify-content: center;
         gap: 10px;
-        background:  #21264D;
+        background: rgb(206, 252, 134);
         cursor: pointer;
         transition: .3s;
     }
