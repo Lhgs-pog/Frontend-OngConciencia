@@ -77,11 +77,11 @@
     #informacoes{
         justify-items: center;
     }
-
+    /*Area de texto*/
     #texto{
         padding: 30px;
     }
-
+    /*Formatar titulo*/
     #informacoes h4{
         width: 100%;
         background-color: #000;
@@ -90,19 +90,19 @@
         text-align: center;
         border-radius: 15px 15px 0px 0px;
     }
-
+    /*Formatar paragrafos*/
     #informacoes p{
         border-bottom: #000 1px solid;
     }
-
+    /*Contatos borda*/
     #contatos{
         border: #000 1px solid;
     }
-
+    /*Remover a linha dos contatos*/
     #contatos p{
         border: none;
     }
-
+    /*Formtar link*/
     #informacoes a{
         padding: 5px 5px 0px 5px;
         text-decoration: none;
@@ -110,13 +110,13 @@
         border: #000 1px solid;
         border-radius: 10px;
     }
-
+    /*Formatar link hover*/
     #informacoes a:hover{
         background-color: #90aeff;
         border-radius: 10px;
         transform: scale(1.1);
     }
-
+    /*Área de avaliação*/
     #avaliacao{
         display: inline-block;
         padding: 15px 0px;

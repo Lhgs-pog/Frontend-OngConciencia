@@ -38,51 +38,47 @@
         </div>
     </nav>
 
-    
-<!--Area de conteudo-->
-    <div id="area-conteudo">
-        <div id="informacoes">
+
+<!--Area de cadastro-->
+    <div id="area-form">
+        <!--Informativo-->
+        <div id="informacao">
             <h4>
-                informações sobre a ONG
+                Cadastrar Ong
             </h4>
-            <img src="imagens/MSF.png" id="imagem-ong" alt="img-ong" href="">
-            <div id="texto">
-                <p>
-                    <b>Nome: </b>nome exemplo
-                </p>
-                <p>
-                    <b>Descrição: </b>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.
-                </p>
-                <div id="contatos">
-                    <p>
-                        <b>Contatos:</b>
-                    </p>
-                    <ul>
-                        <li>
-                            <p>
-                                <b>email: </b>exemplo@gmail.com
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <b>telefone: </b>12 123456789
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-                <div id="avaliacao">
-                    <div class="rating">
-                        <input type="radio" id="star1"><label for="star1"></label>
-                        <input type="radio" id="star2"><label for="star2"></label>
-                        <input type="radio" id="star3"><label for="star3"></label>
-                        <input type="radio" id="star4"><label for="star4"></label>
-                        <input type="radio" id="star5"><label for="star5"></label>
-                      </div>
-                </div>
-                <p>
-                    <a href="">Ir para a instituição</a>
-                </p>
-            </div>
+            <p>
+                Preencha o formulário a seguir para enviar a sua sugestão para nossa equipe. Certifique-se de que as informações a seguir estão corretas:
+            </p>
+        </div>
+
+        <!--Formulário-->
+        <div class="formulario">
+            <form action="">
+                <p>Nome da Ong:</p>
+                <input type="text" placeholder="Nome" >
+                <p>Descrição sobre a Ong:</p>
+                <input type="text" placeholder="Descrição/Causa" >
+                <p>Email de contato da Ong:</p>
+                <input type="email" name="email" id="email-form" placeholder="exemplo@gmail.com" >
+                <p>Telefone de contato da Ong:</p>
+                <input type="text" maxlength="11" placeholder="12 123456789" >
+                <p>Link da imgem da logo da Ong:</p>
+                <input type="text" placeholder="Link da imagem">
+                <p>Link do site oficial da Ong:</p>
+                <input type="text" placeholder="http://www..." >
+                
+                <input type="submit" value="Enviar" id="enviar">
+            </form>
+        </div>
+
+        <!--Mensagem de agradecimento-->
+        <div class="mensagem" id="mensagem">
+            <h2>Mensagem de Agradecimento</h2>
+            <p>Obrigado por cadastrar sua ONG em nosso site!</p>
+            <p>Agradecemos por se juntar a nós nessa missão de conectar pessoas e organizações para construir um mundo melhor. O cadastro da sua ONG foi enviado com sucesso e, para garantir a segurança e a confiabilidade da nossa plataforma, passará por uma avaliação realizada por nossa equipe.</p>
+            <p>Esse processo tem como objetivo verificar se as informações fornecidas estão corretas, se a ONG é segura e legítima, e evitar qualquer tipo de fraude. Nosso compromisso é garantir que todas as organizações cadastradas em nosso site sejam confiáveis, promovendo um ambiente transparente para nossos usuários.</p>
+            <p>Assim que a análise for concluída, entraremos em contato com você para informar o resultado. Agradecemos pela sua paciência e por confiar em nosso trabalho. Juntos, podemos fazer a diferença!</p>
+            <p><strong>Atenciosamente,</strong><br>Equipe ONG Conciêntização</p>
         </div>
     </div>
 
@@ -118,7 +114,7 @@
     </footer>
   
     <!--Script Bootstrap-->
-    <script src="script.js"></script>
+        <script src="script.js" defer></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>

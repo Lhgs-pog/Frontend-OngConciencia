@@ -58,135 +58,78 @@
     }
 
 
-/* Carrosel */
-    /*imagens*/
-    .img-carrosel{
-        max-width: 90vw;
-        height: 375px;
-        border-radius: 10px;
-    }
-    /*Area carrosel*/
-    #carrosel-div img {
-        border: #000 2px solid;
-        display: block;
-        margin: auto;
-      }
 
-    /*texto*/
-    .carrosel-text{
-        color: white;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
-        display: inline;
-    }
-    /*Melhora da fonte*/
-    .carousel-caption h5 {
-        font-size: 1.8rem;
-        font-weight: bold;
-    }
-    /*Melhora do paragrafo*/
-    .carousel-caption p {
-        font-size: 1.2rem;
-    }
-    /*Botões previous e next*/
-    .carrosel-botao{
-        color: #000;
-    }
-
-
-/*Area de apresentação das ongs*/
-    /*Contaainer*/
-    #container-conteudo{
-        background-color: #60efb8;
-    }
-    /*Area de fundo*/
-    #area-de-conteudo{
-        margin-top: 50px;
-        border-radius: 10px;
-        /*background-image: linear-gradient( 135deg, #90aeff, #60efb8, #cefc86);*/
+/*Area do formulário*/
+    /*Geral*/
+    #area-form{
         background-color: white;
-        padding-top: 30px;
-        padding-left: 45px;
-        padding-bottom: 30px;
-    }
-
-    /*Configuração dos cars*/
-    .cards{
-        padding: 0px;
-    }
-
-    /*hover dos cards*/
-    .cards:hover{
-        transform: scale(1.07);
+        margin: auto;
+        display: block;
+        width: 60vw;
         border: #000 1px solid;
+        border-radius: 15px;
+        margin-top: 30px;
     }
-    /*Links dos card*/
-    .cards a{
-        text-decoration: none;
-        color: #000;
+    /*Avisos do inicio*/
+    #informacao{
+        border-bottom: #000 1px solid;
     }
-    .cards a:hover{
-        text-decoration: underline;
-        color: blue;
-        
+    /*Espaçamento da informação*/
+    #informacao p{
+        margin: 30px 0px;
     }
-
-    /*Configuração das imagens*/
-    .card-img{
-        max-width: 284px;
-        max-height: 177px;
+    /*Editar titulo*/
+    #informacao h4{
+        justify-items: center;
+        text-align: center;
+        background-color: #000;
+        color: white;
+        border-radius: 15px 15px 0px 0px;
     }
-
-    /*Avaliação dos cards das ongs*/
-        /*Manipula a área*/
-        .rating {
-            display: flex;
-            transform: rotateY(180deg);
-        }
-        /*Configura o input*/
-        .rating input {
-            display: none;
-        }
-        /*Configura a label*/
-        .rating label {
-            display: block;
-            cursor: pointer;
-            padding-left: 5px;
-            width: 50px;
-            position: relative;
-        }
-        /*Cria a estrela preta*/
-        .rating label::before {
-            content: '\f005';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            font-size: 20px;
-            color: black;
-            z-index: 1;
-            display: block;
-        }
-        /*Cria a estrela amarela*/
-        .rating label::after {
-            content: '\f005';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            font-size: 20px;
-            color: yellow;
-            position: absolute;
-            top: 0;
-            opacity: 0;
-            z-index: 2;
-            transition: opacity 0.5s;
-            text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-        }
-        /*Pwlo que eu vi no video, isso faz com quando o cursor passe por cima, ele faça aparecer o after em cima do before*/
-        .rating label:hover::after,
-        .rating label:hover ~ label::after,
-        .rating input:checked ~ label::after {
-            opacity: 1; /* Faz com que o ::after apareça */
-        }
-        /*https://www.youtube.com/watch?v=4mfPjGb6y84 url do video de estrela*/
-    
-    
+    /*Formulario*/
+    .formulario{
+        justify-items: center;
+        text-align: center;
+        padding: 30px;
+    }
+    /*Perguntas formulario*/
+    .formulario p{
+        padding-top: 30px;
+    }
+    /*Campos do formulario*/
+    .formulario input{
+        background-color: white;
+        border: none;
+        border-bottom: #000 1px solid;
+    }
+    /*Hover dos campos*/
+    .formulario input:hover{
+        transform: scale(1.1);
+        border-bottom: #000 2px solid;
+    }
+    /*Botão enviar*/
+    #enviar{
+        display: block;
+        background-color: #000;
+        align-self: center;
+        justify-items: center;
+        margin: 30px auto;
+        color: white;
+        border-radius: 10px;
+        padding: 5px;
+    }
+    /*Hover botão enviar*/
+    #enviar:hover{
+        transform: scale(1.1);
+    }
+    /*MEnsagem de agradecimento*/
+    #mensagem{
+        display: none;
+        background-color: white;
+        text-align: center;
+        border-top: #000 3px solid;
+        padding: 20px;
+    }
 
 
 /* Footer */
