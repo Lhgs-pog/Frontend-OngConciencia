@@ -107,6 +107,50 @@
         transform: scale(1.1);
         border-bottom: #000 2px solid;
     }
+    /*Botoes*/
+    .botoes{
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .botoes button{
+        cursor: pointer;
+        background-color: #000;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 15px;
+        margin: 15px;
+    }
+
+    .botoes button[disabled]{
+        background-color: #eee;
+        cursor: not-allowed;
+    }
+    .botoes button:hover{
+        background-color: #90aeff;
+        transform: scale(1.1);
+        border: #000 1px solid;
+    }
+    .step-indicator{
+        display: flex;
+        justify-content: space-between;
+    }
+    .step-indicator span{
+        width: 25px;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ccc;
+        border-radius: 50%;
+        color: #fff;
+    }
+    .step-indicator span.active{
+        background-color: #4caf50;
+    }
+
     /*Botão enviar*/
     #enviar{
         display: block;

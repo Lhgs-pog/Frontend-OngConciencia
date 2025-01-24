@@ -22,7 +22,7 @@
             <form class="d-flex" role="search" >
               <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search" id="input-pesquisa">
               <button class="btn btn-outline-success" type="submit" id="btn-pesquisa">
-                <i class="fas fa-search"></i> 
+                <img src="icones/magnifying-glass-solid.svg" alt="" width="15px" height="15px"> 
               </button>
             </form>
             <ul class="nav justify-content-end">
@@ -51,22 +51,49 @@
         </div>
 
         <!--Formulário-->
+        <!--https://www.youtube.com/watch?v=P7-MwXsV3mA-->
         <div class="formulario">
-            <form action="">
-                <p>Nome da Ong:</p>
-                <input type="text" placeholder="Nome" >
-                <p>Descrição sobre a Ong:</p>
-                <input type="text" placeholder="Descrição/Causa" >
-                <p>Email de contato da Ong:</p>
-                <input type="email" name="email" id="email-form" placeholder="exemplo@gmail.com" >
-                <p>Telefone de contato da Ong:</p>
-                <input type="text" maxlength="11" placeholder="12 123456789" >
-                <p>Link da imgem da logo da Ong:</p>
-                <input type="text" placeholder="Link da imagem">
-                <p>Link do site oficial da Ong:</p>
-                <input type="text" placeholder="http://www..." >
+            <form action="" id="formulario">
+                <div class="step-indicator">
+                    <span class="active">1</span>
+                    <span>2</span>
+                    <span>3</span>
+                </div>
+                <!--Geral-->
+                <div class="step-active" id="step1">
+                    <p>Nome da Ong:</p>
+                    <input type="text" placeholder="Nome" required >
+                    <p>Descrição sobre a Ong:</p>
+                    <input type="text" placeholder="Descrição/Causa" required>
+                </div>
+                <!--Contatos-->
+                <div class="step" id="step2">
+                    <p>Email de contato da Ong:</p>
+                    <input type="email" name="email" id="email-form" placeholder="exemplo@gmail.com" required>    
+                    <p>Telefone de contato da Ong:</p>
+                    <input type="text" maxlength="11" placeholder="12 123456789" >
+                </div>
+                <!--Links-->
+                <div class="step" id="step3">
+                    <p>Link da imgem da logo da Ong:</p>
+                    <input type="text" placeholder="Link da imagem">
+                    <p>Link do site oficial da Ong:</p>
+                    <input type="text" placeholder="http://www..." required>
+                </div>
                 
-                <input type="submit" value="Enviar" id="enviar">
+                <!--
+                    <input type="submit" value="Enviar" id="enviar">
+                -->
+
+                <div class="botoes">
+                    <button id="btn-anterior" onclick="prevStep()" disabled>
+                        Anterior
+                    </button>
+                    <button id="btn-proximo" onclick="nextStep()">
+                        Próximo
+                    </button>
+                </div>
+
             </form>
         </div>
 
@@ -77,7 +104,7 @@
             <p>Agradecemos por se juntar a nós nessa missão de conectar pessoas e organizações para construir um mundo melhor. O cadastro da sua ONG foi enviado com sucesso e, para garantir a segurança e a confiabilidade da nossa plataforma, passará por uma avaliação realizada por nossa equipe.</p>
             <p>Esse processo tem como objetivo verificar se as informações fornecidas estão corretas, se a ONG é segura e legítima, e evitar qualquer tipo de fraude. Nosso compromisso é garantir que todas as organizações cadastradas em nosso site sejam confiáveis, promovendo um ambiente transparente para nossos usuários.</p>
             <p>Assim que a análise for concluída, entraremos em contato com você para informar o resultado. Agradecemos pela sua paciência e por confiar em nosso trabalho. Juntos, podemos fazer a diferença!</p>
-            <p><strong>Atenciosamente,</strong><br>Equipe ONG Conciêntização</p>
+            <p><b>Atenciosamente,</b><br><b>Equipe ONG Conciêntização</b></p>
         </div>
     </div>
 
