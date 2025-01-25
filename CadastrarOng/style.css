@@ -93,8 +93,10 @@
         padding: 30px;
     }
     /*Perguntas formulario*/
-    .formulario p{
+    .formulario label{
         padding-top: 30px;
+        display: block;
+        margin-bottom: 5px;
     }
     /*Campos do formulario*/
     .formulario input{
@@ -133,6 +135,13 @@
         transform: scale(1.1);
         border: #000 1px solid;
     }
+    .step {
+        display: none;
+    }
+    .step.active{
+        display: block;
+    }
+
     .step-indicator{
         display: flex;
         justify-content: space-between;

@@ -60,25 +60,28 @@
                     <span>3</span>
                 </div>
                 <!--Geral-->
-                <div class="step-active" id="step1">
-                    <p>Nome da Ong:</p>
-                    <input type="text" placeholder="Nome" required >
-                    <p>Descrição sobre a Ong:</p>
-                    <input type="text" placeholder="Descrição/Causa" required>
+                <div class="step active" id="step1">
+                    <label for="nome">Nome da Ong:</label>
+                    <input id="nome" type="text" placeholder="Nome" required >
+                    
+                    <label for="descricao">Descrição sobre a Ong:</label>
+                    <input id="descricao" type="text" placeholder="Descrição/Causa" required>
                 </div>
                 <!--Contatos-->
                 <div class="step" id="step2">
-                    <p>Email de contato da Ong:</p>
+                    <label for="email-form">Email de contato da Ong:</label>
                     <input type="email" name="email" id="email-form" placeholder="exemplo@gmail.com" required>    
-                    <p>Telefone de contato da Ong:</p>
-                    <input type="text" maxlength="11" placeholder="12 123456789" >
+            
+                    <label for="telefone">Telefone de contaato da Ong:</label>
+                    <input id="telefone" type="text" maxlength="11" placeholder="12 123456789" >
                 </div>
                 <!--Links-->
                 <div class="step" id="step3">
-                    <p>Link da imgem da logo da Ong:</p>
-                    <input type="text" placeholder="Link da imagem">
-                    <p>Link do site oficial da Ong:</p>
-                    <input type="text" placeholder="http://www..." required>
+                    <label for="imagem">Link da imagem da logo da Ong:</label>
+                    <input id="imagem" type="text" placeholder="Link da imagem">
+
+                    <label for="site">Linl do site oficial da Ong:</label>
+                    <input id="site" type="text" placeholder="http://www..." required>
                 </div>
                 
                 <!--
@@ -86,15 +89,17 @@
                 -->
 
                 <div class="botoes">
-                    <button id="btn-anterior" onclick="prevStep()" disabled>
+                    <button type="button" id="btn-anterior" onclick="prevStep()" disabled>
                         Anterior
                     </button>
-                    <button id="btn-proximo" onclick="nextStep()">
+                    <button type="button" id="btn-proximo" onclick="nextStep()">
                         Próximo
                     </button>
                 </div>
-
+                
             </form>
+            
+            <span id="result"></span>
         </div>
 
         <!--Mensagem de agradecimento-->
