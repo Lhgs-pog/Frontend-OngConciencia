@@ -231,7 +231,46 @@
         color: #fff;
      }
      
+/*Formulário multi step*/
+     /*Botões*/
+     .botoes {
+        display: flex;
+        justify-content: space-between;
+     }
+     .botoes button{
+        width: 100px;
+        padding: 5px 10px;
+        margin: 15px;
+     }
 
+     .botoes button[disabled]{
+        background-color: #ccc;
+        cursor: not-allowed;
+     }
+
+     /*Controle dos passos*/
+     .step{
+        display: none;
+     }
+
+     .step.active{
+        display: block;
+     }
+
+     #codigo{
+        display: flex;
+        width: 60%;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+     }
+
+     /*Remove as setinhas do input type number*/
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
 
 
 
