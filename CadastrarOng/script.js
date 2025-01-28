@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
      * Função que avança para a próxima etapa.
      * Valida os campos antes de permitir a navegação.
      */
-    function nextStep() {
+    async function nextStep() {
         if (!validateStep(currentstep)) return; // Se a validação falhar, interrompe a execução
 
         if (currentstep < 3) {
@@ -66,6 +66,42 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById("formulario").style.display = "none";
             //mostra a mensagem de agradecimento
             document.getElementById("mensagem").style.display = "block";
+            
+            /*Enviar registro para o backend*/
+                /*Salvar ong*/
+                const form = document.getElementById("formulario");
+                //endereço do endpoint
+                const url = "//localhost:8080/ong";
+
+                //Pega os dados inseridos no form
+                let formData = new FormData(form);
+                //Transofrma os dados em um objeto js
+                let data = Object.fromEntries(formData.entries());
+                //Vai tentar fazer a conexão com o fetch
+                try{
+                    //Configuração do fetch
+                    const response = await fetch(url, {
+                        method: "POST",
+                        headers: {
+                            'Content-Type':'application/json',
+                        },
+                        //transforma os dados em json
+                        body: JSON.stringify(data),
+                    })
+
+                    //Se a resposta for diferente do status 200 a 299(OK), mostrara o erro
+                    if(!response.ok){
+                        throw new Error(`Erro: ${response.status} = ${response.statusText}`)
+                        
+                    }
+                    //Resposta do servidor
+                    const result = await response.json();
+                    console.log('Resposta do servidor: ',result);
+
+
+                } catch (error){
+                    console.error('Erro ao enviar os dados: ',error);
+                }            
         }
     }
 

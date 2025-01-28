@@ -89,6 +89,9 @@
         justify-self: center;
         text-align: center;
         border-radius: 15px 15px 0px 0px;
+        text-transform: uppercase; 
+        letter-spacing: 1px; 
+        padding: 10px 20px;
     }
     /*Formatar paragrafos*/
     #informacoes p{
