@@ -131,6 +131,7 @@ function changeIcon(value){
             //simula evento de envio
             console.log("Enviado com sucesso");
             alert("Enviado com sucesso");
+            handleRegistrationFlow(); // Chamando apenas no submit
         }
     }
 
@@ -147,3 +148,112 @@ function changeIcon(value){
     // Torna as funções acessíveis no escopo global (necessário para os botões)
     window.nextStep = nextStep;
     window.prevStep = prevStep;
+
+
+
+   /**
+ * Função FETCH (Gerar Código)
+ */
+async function genCode(email) {
+    try {
+        const response = await fetch('/codigo', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email }),
+        });
+
+        if (response.ok) {
+            console.log('Código enviado para o email:', email);
+        } else {
+            throw new Error('Erro ao gerar o código!');
+        }
+    } catch (error) {
+        console.error('Erro:', error);
+    }
+}
+
+/**
+ * Função FETCH (Tentativa do Usuário)
+ */
+async function userAttempt(codeInserted) {
+    try {
+        const name = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        const user = {
+            name: name,
+            email: email,
+            password: password,
+        };
+
+        const response = await fetch('/tentativa', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({code: codeInserted, user}),
+        });
+
+        if (response.ok) {
+            console.log('Código validado com sucesso!');
+            return user; // Retorna o usuário para o próximo passo
+        } else if (response.status === 400) {
+            console.warn('Código inválido! Tente novamente.');
+            return null;
+        } else {
+            throw new Error('Erro na tentativa de validação');
+        }
+    } catch (error) {
+        console.error('Erro:', error);
+        return null;
+    }
+}
+
+/**
+ * Função FETCH (Registrar Usuário)
+ */
+async function registerUser(user) {
+    try {
+        const response = await fetch('/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({user}),
+        });
+
+        if (response.ok) {
+            const register = await response.json();
+            console.log('Usuário registrado com sucesso!', register);
+        } else {
+            console.error('Erro ao registrar o usuário!');
+        }
+    } catch (error) {
+        console.error('Erro:', error);
+    }
+}
+
+/**
+ * Controle de Fluxo
+ */
+async function handleRegistrationFlow() {
+    const email = document.getElementById('email').value;
+
+    // Gera o código e aguarda a tentativa
+    await genCode(email);
+
+    let user = null;
+    while (!user) {
+        const codeInserted = document.getElementById('codigo').value;
+        user = await userAttempt(codeInserted);
+    }
+
+    // Se a tentativa for bem-sucedida, registra o usuário
+    await registerUser(user);
+
+    console.log('Usuário cadastrado com sucesso!');
+}
+
