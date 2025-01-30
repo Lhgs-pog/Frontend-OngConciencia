@@ -157,20 +157,24 @@ function changeIcon(value){
 
     // Função FETCH (Gerar Código)
     async function genCode(email) {
-        try {
-            const response = await fetch(`http://localhost:8080/codigo?email=${encodeURIComponent(email)}`, {
-                method: 'POST',
-            });
-    
-            if (response.ok) {
-                console.log('Código enviado para o email:', email);
-            } else {
-                throw new Error('Erro ao gerar o código!');
-            }
-        } catch (error) {
-            console.error('Erro:', error);
+    try {
+        const response = await fetch("http://localhost:8080/user/codigo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(email) 
+        });
+
+        if (response.ok) {
+            console.log("Código enviado para o email:", email);
+        } else {
+            throw new Error("Erro ao gerar o código!");
         }
+    } catch (error) {
+        console.error("Erro:", error);
     }
+}
 
 /**
  * Função FETCH (Tentativa do Usuário)
