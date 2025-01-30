@@ -121,8 +121,13 @@ function changeIcon(value){
      * Função que avança para a próxima etapa.
      * Valida os campos antes de permitir a navegação.
      */
-    function nextStep() {
+    async function nextStep() {
         if (!validateStep(currentstep)) return; // Se a validação falhar, interrompe a execução
+
+        if (currentstep === 1) {
+            const email = document.getElementById('email').value;
+            await genCode(email); // Gera código quando o usuário avança para a segunda etapa
+        }
 
         if (currentstep < 2) {
             currentstep++; // Avança para a próxima etapa
@@ -150,29 +155,22 @@ function changeIcon(value){
     window.prevStep = prevStep;
 
 
-
-   /**
- * Função FETCH (Gerar Código)
- */
-async function genCode(email) {
-    try {
-        const response = await fetch('/codigo', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email }),
-        });
-
-        if (response.ok) {
-            console.log('Código enviado para o email:', email);
-        } else {
-            throw new Error('Erro ao gerar o código!');
+    // Função FETCH (Gerar Código)
+    async function genCode(email) {
+        try {
+            const response = await fetch(`http://localhost:8080/codigo?email=${encodeURIComponent(email)}`, {
+                method: 'POST',
+            });
+    
+            if (response.ok) {
+                console.log('Código enviado para o email:', email);
+            } else {
+                throw new Error('Erro ao gerar o código!');
+            }
+        } catch (error) {
+            console.error('Erro:', error);
         }
-    } catch (error) {
-        console.error('Erro:', error);
     }
-}
 
 /**
  * Função FETCH (Tentativa do Usuário)
@@ -184,17 +182,17 @@ async function userAttempt(codeInserted) {
         const password = document.getElementById('password').value;
 
         const user = {
-            name: name,
+            nome: name, 
             email: email,
-            password: password,
+            senha: password, 
         };
 
-        const response = await fetch('/tentativa', {
+        const response = await fetch(`http://localhost:8080/usuario/${codeInserted}`, { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({code: codeInserted, user}),
+            body: JSON.stringify(user),
         });
 
         if (response.ok) {
@@ -217,17 +215,16 @@ async function userAttempt(codeInserted) {
  */
 async function registerUser(user) {
     try {
-        const response = await fetch('/register', {
+        const response = await fetch('http://localhost:8080/register', { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({user}),
+            body: JSON.stringify(user),
         });
 
         if (response.ok) {
-            const register = await response.json();
-            console.log('Usuário registrado com sucesso!', register);
+            console.log('Usuário registrado com sucesso!');
         } else {
             console.error('Erro ao registrar o usuário!');
         }
@@ -240,20 +237,12 @@ async function registerUser(user) {
  * Controle de Fluxo
  */
 async function handleRegistrationFlow() {
-    const email = document.getElementById('email').value;
+    const codeInserted = document.getElementById('codigo').value;
+    let user = await userAttempt(codeInserted);
 
-    // Gera o código e aguarda a tentativa
-    await genCode(email);
-
-    let user = null;
-    while (!user) {
-        const codeInserted = document.getElementById('codigo').value;
-        user = await userAttempt(codeInserted);
+    if (user) {
+        await registerUser(user);
+        console.log('Usuário cadastrado com sucesso!');
     }
-
-    // Se a tentativa for bem-sucedida, registra o usuário
-    await registerUser(user);
-
-    console.log('Usuário cadastrado com sucesso!');
 }
 
