@@ -124,14 +124,12 @@ function changeIcon(value){
     async function nextStep() {
         if (!validateStep(currentstep)) return; // Se a validação falhar, interrompe a execução
 
-        if (currentstep === 1) {
-            const email = document.getElementById('email').value;
-            await genCode(email); // Gera código quando o usuário avança para a segunda etapa
-        }
-
         if (currentstep < 2) {
             currentstep++; // Avança para a próxima etapa
             showstep(currentstep); // Mostra a nova etapa
+
+            const email = document.getElementById('email').value;
+            await genCode(email); // Gera código quando o usuário avança para a segunda etapa
         } else {
             //simula evento de envio
             console.log("Enviado com sucesso");
@@ -191,7 +189,7 @@ async function userAttempt(codeInserted) {
             senha: password, 
         };
 
-        const response = await fetch(`http://localhost:8080/usuario/${codeInserted}`, { 
+        const response = await fetch(`http://localhost:8080/user/${codeInserted}`, { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -219,7 +217,7 @@ async function userAttempt(codeInserted) {
  */
 async function registerUser(user) {
     try {
-        const response = await fetch('http://localhost:8080/register', { 
+        const response = await fetch('http://localhost:8080/user/register', { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
