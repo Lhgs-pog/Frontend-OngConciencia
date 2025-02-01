@@ -128,7 +128,7 @@ function changeIcon(value){
             currentstep++; // Avança para a próxima etapa
             showstep(currentstep); // Mostra a nova etapa
 
-            const email = document.getElementById('email').value;
+            const email = document.getElementById('email').value.trim().replace(/^"|"$/g, '');
             await genCode(email); // Gera código quando o usuário avança para a segunda etapa
         } else {
             //simula evento de envio
@@ -197,38 +197,16 @@ async function userAttempt(codeInserted) {
             body: JSON.stringify(user),
         });
 
+        console.log("Status da resposta:", response.status);
+
         if (response.ok) {
             console.log('Código validado com sucesso!');
-            return user; // Retorna o usuário para o próximo passo
         } else if (response.status === 400) {
-            console.warn('Código inválido! Tente novamente.');
-            return null;
+            console.warn(`Código inválido! Tente novamente - Status: ${response.status} - Detalhes: ${response.text}`);
         } else {
-            throw new Error('Erro na tentativa de validação');
-        }
-    } catch (error) {
-        console.error('Erro:', error);
-        return null;
-    }
-}
-
-/**
- * Função FETCH (Registrar Usuário)
- */
-async function registerUser(user) {
-    try {
-        const response = await fetch('http://localhost:8080/user/register', { 
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(user),
-        });
-
-        if (response.ok) {
-            console.log('Usuário registrado com sucesso!');
-        } else {
-            console.error('Erro ao registrar o usuário!');
+            const errorText = await response.text(); // Captura o erro detalhado da API
+            console.error('Erro na tentativa de validação:', errorText);
+            throw new Error(`Erro na tentativa de validação - Status: ${response.status} - Detalhes: ${errorText}`);
         }
     } catch (error) {
         console.error('Erro:', error);
@@ -240,11 +218,6 @@ async function registerUser(user) {
  */
 async function handleRegistrationFlow() {
     const codeInserted = document.getElementById('codigo').value;
-    let user = await userAttempt(codeInserted);
-
-    if (user) {
-        await registerUser(user);
-        console.log('Usuário cadastrado com sucesso!');
-    }
+    await userAttempt(codeInserted);
 }
 
