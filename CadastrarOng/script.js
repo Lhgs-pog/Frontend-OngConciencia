@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 /*Salvar ong*/
                 const form = document.getElementById("formulario");
                 //endereço do endpoint
-                const url = "//localhost:8080/ong";
+                const url = "http://localhost:8080/ong";
 
                 //Pega os dados inseridos no form
                 let formData = new FormData(form);
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         
                     }
                     //Resposta do servidor
-                    const result = await response.json();
+                    const result = await response.text();
                     console.log('Resposta do servidor: ',result);
 
 

@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', function(){
     * Função fetch para recuperar os dados da ong e colocalos no html
     */
     async function DadosOng() {
-        const url = `http://localhost:8080/ong/${id}`;
         const uuid = pegarUUID();
+        const url = `http://localhost:8080/ong/${uuid}`;
 
         try{
             //Configuração e chamada do fetch
@@ -42,12 +42,12 @@ document.addEventListener('DOMContentLoaded', function(){
             let dadosOng = await resposta.json();
     
             //Modifica os valores no html pelos os obtidos na ong
-            imagem.src = dadosOng.imagem;
+            imagem.src = dadosOng.link_img;
             nome.textContent = dadosOng.nome;
             descricao.textContent = dadosOng.descricao;
             email.textContent = dadosOng.email;
             telefone.textContent = dadosOng.telefone;
-            site.href = dadosOng.link;
+            site.href = dadosOng.link_site;
             
         }catch(error){
             console.error(`Não foi possível recuperar os dados da Ong. Error: ${error}`);
