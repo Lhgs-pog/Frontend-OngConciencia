@@ -63,7 +63,7 @@
                     <!-- Geral -->
                     <div class="tab-pane fade show active" id="account-general">
                         <div class="d-flex align-items-center mb-4">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="rounded-circle me-3" width="80">
+                            <img  id="foto-perfil"  src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="rounded-circle me-3" width="80">
                             <div>
                                 <label class="btn btn-outline-primary btn-sm">
                                     Carregar nova foto
@@ -76,15 +76,11 @@
                         <form>
                             <div class="mb-3">
                                 <label class="form-label">Nome</label>
-                                <input type="text" class="form-control" value="Daniel Umberto">
+                                <input type="text" class="form-control" id="nome"  value="">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">E-mail</label>
-                                <input type="email" class="form-control" value="danielumberto1@gmail.com">
-                                <div class="alert alert-warning mt-3">
-                                    Seu email não está confirmado. <br>
-                                    <a href="#">Reenviar confirmação</a>
-                                </div>
+                                <input type="email" class="form-control" id="email" value="">
                             </div>
                         </form>
                     </div>
@@ -98,7 +94,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Nova Senha</label>
-                                <input type="password" class="form-control">
+                                <input type="password" id="nova-senha" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Confirmar Nova Senha</label>
