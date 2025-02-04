@@ -63,6 +63,16 @@
         width: 100%;
     }
 
+    /*  Imagem de perfil  */
+    .profile-image {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    /*  Ocultar menu do usuário  */
+    
 
 /* Carrosel */
     /*imagens*/
