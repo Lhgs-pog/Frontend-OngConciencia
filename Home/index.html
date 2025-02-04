@@ -9,33 +9,46 @@
   </head>
   <body>
     
-<!--BARRA DE NAVEGAÇÃO-->
-    <nav class="navbar navbar-expand-lg" id="nave">
-        <div class="container-fluid" id="nave">
-          <a href="../Home/index.html">
-            <img class="logo" src="imagens/LogoOng.png" alt="Logo">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-            <form class="d-flex" role="search" >
-              <input id="pesquisa" class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search" id="input-pesquisa">
+<!-- BARRA DE NAVEGAÇÃO -->
+<nav class="navbar navbar-expand-lg" id="nave">
+  <div class="container-fluid" id="nave">
+      <a href="../Home/index.html">
+          <img class="logo" src="imagens/LogoOng.png" alt="Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+          <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search" id="input-pesquisa">
               <button class="btn btn-outline-success" type="button" id="btn-pesquisa" onclick="pesquisarOng()">
                 <img src="icones/magnifying-glass-solid.svg" alt="" width="15px" height="15px">  
               </button>
-            </form>
-            <ul class="nav justify-content-end">
-                <li class="nav-item">
+          </form>
+          <ul class="nav justify-content-end">
+              <li class="nav-item">
                   <a class="nav-link a" href="../CadastrarOng/index.html">Divulgue sua Ong</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link a" href="../LoginCadastro/index.html">Entrar/Cadastrar</a>
-                </li>
-            </ul>
-          </div>
-        </div>
-    </nav>
+              </li>
+              <!-- Link padrão de login/cadastro -->
+              <li class="nav-item" id="auth-links">
+                  <a class="nav-link a" href="../LoginCadastro/index.html" style="display: none;">Entrar/Cadastrar</a>
+              </li>
+              <!-- Menu Dropdown do usuário -->
+              <li class="nav-item dropdown" id="user-menu" style="display: none;">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <img id="profile-pic" src="/Home/imagens/default-image.png" alt="Foto de perfil" class="profile-image">
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="../Perfil/index.html">Perfil</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#" id="logout">Sair</a></li>
+                  </ul>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
 
 <!--CARROUSEL-->
     <div id="carouselExampleCaptions" class="carousel slide" style=" padding-top: 30px; padding-bottom: 30px;">
