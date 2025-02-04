@@ -1,8 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-    //Url do endpoint da api
-    const url = 'http://localhost:8080/ong';
-
     /*
     * Função para pesquisa ongs com uma palavra chave
     */
@@ -17,50 +14,73 @@ document.addEventListener('DOMContentLoaded', function(){
     })
 
     /*
+    * Função para pegar a palavra passe na url 
+    */
+   function pegarKeyword(){
+       const param = new URLSearchParams(window.location.search);
+       return param.get("keyword");
+    }
+    
+    /*
     * Função para pegar as ongs no banco de dados e inserir elas no html
     */
-    async function pegarOngs() {
-
+    async function pegarOngsPesquisada() {
+        // Pega a palavra-chave (certifique-se de que a função pegarKeyword() está definida)
+        const keyword = pegarKeyword();
+        // URL do endpoint da API
+        const url = `http://localhost:8080/ong/search?keyword=${encodeURIComponent(keyword)}`;
+       
         try {
-            //Configuração e chamada do endpoint
+            // Configuração e chamada do endpoint
             let resposta = await fetch(url, {
                 method: 'GET',
                 headers: {
-                    'Content-Type':'application/json',
+                    'Content-Type': 'application/json',
                 },
             });
     
-            //Exibe o erro caso a resposta da api seja diferente de ok(200 a 299) e exibe o erro no console
-            if(!resposta.ok){
-                console.error(`Erro ao recuperar os dados das ongs. Status: ${resposta.status}, Conteúdo: ${resposta.body}`);
-                throw new Error(`Erro ao recuperar os dados das ongs, Status: ${resposta.status}, Conteúdo: ${resposta.body}`);
+            // Se a resposta da API não for OK (status 200 a 299), exibe o erro no console
+            if (!resposta.ok) {
+                const errorText = await resposta.text();
+                console.error(`Erro ao recuperar os dados das ongs. Status: ${resposta.status}, Conteúdo: ${errorText}`);
+                throw new Error(`Erro ao recuperar os dados das ongs, Status: ${resposta.status}, Conteúdo: ${errorText}`);
             }
     
-            //Converte a resposta json pra uma variável
+            // Converte a resposta para JSON (supondo que a API retorna um array)
             let ongs = await resposta.json();
     
-            //Se a api retorna uma lista vazia, exibe uma mensagem
-            if(!ongs || ongs.length === 0){
-                const container = document.getElementById('area-de-conteudo');
-                container.innerHTML = '<p class="avisos"> Nenhuma ong foi encontrada.</p>';
+            // Se a resposta não for um array, tenta converter para array (ou exibe um erro)
+            if (!Array.isArray(ongs)) {
+                console.warn("A resposta não é um array, tentando converter...");
+                ongs = [ongs];
             }
-
-            //Controle de estrelas
+    
+            // Se a API retorna uma lista vazia, exibe uma mensagem
+            if (!ongs || ongs.length === 0) {
+                const container = document.getElementById('area-de-conteudo');
+                container.innerHTML = '<p class="avisos">Nenhuma ONG foi encontrada com esse nome.</p>';
+                return;
+            }
+    
+            // Controle de estrelas
             let estrela = 0;
+            const areaOng = document.getElementById('area-de-conteudo');
+            // Limpa a área de conteúdo (opcional, se desejar substituir o conteúdo atual)
+            areaOng.innerHTML = '';
     
-            //Loop para inserir cada uma das ongs dentro da area de conteudo
+            // Loop para inserir cada ONG na área de conteúdo
             ongs.forEach(ong => {
-                const {id, nome, descricao, email, telefone, link_img, link_site} = ong;
+                const { id, nome, descricao, email, telefone, link_img, link_site } = ong;
     
-                //Define o card como um link para a página da ong passando o uuid
+                // Cria o link que envolverá o card da ONG
                 const ongLink = document.createElement('a');
                 ongLink.classList.add('ong');
                 ongLink.href = `../PaginaONG/index.html?uuid=${id}`;
     
-                //Inserção da ong no html seguindo essa estrutura
+                // Define o conteúdo do card
                 ongLink.innerHTML = `
-                    <div class="card cards" style="width: 18rem;" >
-                        <img src="${link_img}" class="card-img-top card-img" alt="...">
+                    <div class="card cards" style="width: 18rem;">
+                        <img src="${link_img}" class="card-img-top card-img" alt="Imagem da ONG">
                         <div class="card-body">
                             <h5 class="card-title">${nome}</h5>
                             <p class="card-text">${descricao}</p>
@@ -81,22 +101,21 @@ document.addEventListener('DOMContentLoaded', function(){
                         </div>
                     </div>
                 `;
-                
-                //Insere essa ong na area de conteudo
-                const areaOng = document.getElementById('area-de-conteudo');
+    
+                // Insere o card na área de conteúdo
                 areaOng.appendChild(ongLink);
     
-                //Aumenta o numero das estrelas
-                estrela= estrela+5;
+                // Atualiza o contador de estrelas
+                estrela += 5;
             });
         } catch (error) {
-            console.error(`Erro ao recuperar e emitir as ongs. Error: ${error}`);
+            console.error(`Erro ao recuperar e emitir as ONGs. Error: ${error}`);
             const areaOngs = document.getElementById('area-de-conteudo');
-            //Exibe uma mensagem caso não seja posível recuperar as ongs
-            areaOngs.innerHTML = '<p class="avisos">Não foi possível recuperar as Ongs. Nós desculpamos pela inconveniência</p>';
+            areaOngs.innerHTML = '<p class="avisos">Não foi possível recuperar as ONGs. Nós desculpamos pela inconveniência.</p>';
         }
-    };
+    }
+    
 
     //Chama a função assim que o código carregar
-    pegarOngs();
+    pegarOngsPesquisada();
 });

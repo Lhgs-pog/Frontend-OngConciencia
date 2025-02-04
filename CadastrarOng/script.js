@@ -2,6 +2,19 @@ document.addEventListener('DOMContentLoaded', function () {
     // Variável que controla qual etapa está ativa
     let currentstep = 1;
 
+    /*
+        * Função para pesquisa ongs com uma palavra chave
+        */
+    const btnPesquisarOng = document.getElementById('btn-pesquisa');
+    btnPesquisarOng.addEventListener('click', () => {
+        const keyword = document.getElementById('pesquisa').value;
+
+        if(keyword.trim() !== ""){
+            window.location.href = `../PesquisaOng/index.html?keyword=${encodeURIComponent(keyword)}`;
+        }
+        console.error("A pesquisa não pode ser vaziaa");
+    })
+
     /**
      * Função que exibe a etapa atual do formulário.
      * Ela altera a visibilidade dos campos e atualiza os indicadores de etapa.
