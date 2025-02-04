@@ -226,24 +226,33 @@ async function handleRegistrationFlow() {
  * LOGIN 
  */
 async function login() {
-    const email = document.getElementById("email").value;
-    const senha = document.getElementById("logPassword").value;
+    try {
+        const email = document.getElementById("emailLogin").value;
+        const senha = document.getElementById("logPassword").value;
 
-    const response = await fetch("http://localhost:8080/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email, senha })
-    });
+        const user = { email, senha };
 
-    if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem("token", data.token); // Armazena o token no localStorage
-        alert("Login realizado com sucesso!");
-        window.location.href = "../Home/index.html"; // Redireciona para a página principal
-    } else {
-        alert("Erro ao fazer login. Verifique suas credenciais.");
+        const response = await fetch("http://localhost:8080/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user)
+        });
+
+        console.log("Status da resposta:", response.status);
+
+        if (response.ok) {
+            const data = await response.json();
+            localStorage.setItem("token", data.token);
+            alert("Login realizado com sucesso!");
+            window.location.href = "../Home/index.html";
+        } else {
+            const errorText = await response.text();
+            console.error("Erro na tentativa de validação:", errorText);
+        }
+    } catch (error) {
+        console.error("Erro na requisição:", error);
     }
 }
 
