@@ -85,13 +85,25 @@
         margin: 0 auto;
     }
 
+    /*Formatação dos links do github*/
+        .link-git{
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .link-git:hover{
+            color: blue;
+            transform: scale(1.15);
+        }
+
 
 
 /* Footer */
     /*Configuração geral*/
     .footer {
         margin-top: 35px;
-        background: rgb(206,252,134);
+        background-color: rgb(0,0,0,0);
+        font-weight: bold;
         padding: 20px 0 20px;
         border-top: 1px solid #eee;
     }
