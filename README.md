@@ -80,7 +80,8 @@ Abra um Pull Request 🚀
 ---
 
 ## 🤓 Features
-    -  Busca aproximada: Procure por suas Ongs favoritas mesmo com o nome incompleto.
-    -  Vericação de email: Impeça que pessoas mal intencionadas use o seu email.
-    -  OAuth 2 Google: Entra e se casdatre de maneira maia rápida e segura no noso site.
-    -  Banco eficiênte: Melhor desempenho em consultas de busca e comparação através de índices e pg_trgm.
+- **Busca aproximada**: Procure por suas ONGs favoritas mesmo com o nome incompleto.  
+- **Verificação de e-mail**: Impeça que pessoas mal-intencionadas usem o seu e-mail.  
+- **OAuth 2 Google**: Entre e se cadastre de maneira mais rápida e segura no nosso site.  
+- **Banco eficiente**: Melhor desempenho em consultas de busca e comparação através de índices e `pg_trgm`.  
+
