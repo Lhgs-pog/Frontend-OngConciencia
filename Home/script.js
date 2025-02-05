@@ -100,3 +100,53 @@ document.addEventListener('DOMContentLoaded', function(){
     //Chama a função assim que o código carregar
     pegarOngs();
 });
+
+
+document.addEventListener("DOMContentLoaded", async function () {
+    // Recupera informações do login
+    const token = sessionStorage.getItem("token");
+    const email = sessionStorage.getItem("email");
+
+    // Verificação básica
+    if (!token || !email) {
+        console.log("Usuário não autenticado. Redirecionando para login...");
+        // window.location.href = "../LoginCadastro/index.html";
+    }
+
+    try {
+        // Faz a requisição GET usando encodeURIComponent para evitar erros com o e-mail
+        const response = await fetch(`http://localhost:8080/user/email/${encodeURIComponent(email)}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        console.log("Status da resposta:", response.status);
+
+        if (!response.ok) {
+            throw new Error("Erro ao buscar os dados do usuário.");
+        }
+
+        // Obtém os dados do usuário
+        const userData = await response.json();
+        console.log("Dados completos do usuário:", userData);
+
+        // Criando objeto Usuario sem a senha por segurança
+        const Usuario = {
+            id: userData.id,
+            nome: userData.nome,
+            email: userData.email,
+            // foto: userData.foto (Se houver)
+        };
+
+        // Salva o objeto no sessionStorage
+        sessionStorage.setItem("usuario", JSON.stringify(Usuario));
+
+        // Redireciona para o perfil com o ID na URL
+        // window.location.href = `../Perfil/perfil.html?id=${Usuario.id}`;
+    } catch (error) {
+        console.error("Erro na requisição:", error);
+        sessionStorage.clear();
+    }
+});

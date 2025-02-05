@@ -244,7 +244,11 @@ async function login() {
 
         if (response.ok) {
             const data = await response.json();
-            localStorage.setItem("token", data.token);
+
+            // Salva o token e o email no sessionStorage
+            sessionStorage.setItem("token", data.token);
+            sessionStorage.setItem("email", email);
+            
             alert("Login realizado com sucesso!");
             window.location.href = "../Home/index.html";
         } else {
