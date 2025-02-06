@@ -12,33 +12,45 @@
 
 <body>
 
-    <!--BARRA DE NAVEGAÇÃO-->
-    <nav class="navbar navbar-expand-lg" id="nave">
-        <div class="container-fluid" id="nave">
-          <a href="../Home/index.html">
+    <!-- BARRA DE NAVEGAÇÃO -->
+<nav class="navbar navbar-expand-lg" id="nave">
+    <div class="container-fluid" id="nave">
+        <a href="../Home/index.html">
             <img class="logo" src="imagens/LogoOng.png" alt="Logo">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-            <form class="d-flex" role="search" >
-                <input id="pesquisa" class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search" id="input-pesquisa">
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search" id="input-pesquisa">
                 <button class="btn btn-outline-success" type="button" id="btn-pesquisa" onclick="pesquisarOng()">
                   <img src="icones/magnifying-glass-solid.svg" alt="" width="15px" height="15px">  
                 </button>
             </form>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                  <a class="nav-link a" href="../CadastrarOng/index.html">Divulgue sua Ong</a>
+                    <a class="nav-link a" href="../CadastrarOng/index.html">Divulgue sua Ong</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link a" href="../LoginCadastro/index.html">Entrar/Cadastrar</a>
+                <!-- Link padrão de login/cadastro -->
+                <li class="nav-item" id="auth-menu">
+                    <a class="nav-link a" href="../LoginCadastro/index.html">Entrar/Cadastrar</a>
+                </li>
+                <!-- Menu Dropdown do usuário -->
+                <li class="nav-item dropdown" id="user-menu">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img id="profile-pic" src="../Home/imagens/user_icon.png" alt="Foto de perfil" class="profile-image">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="../PerfilUsuario/index.html" id="profile-user">Perfil</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" id="logout">Sair</a></li>
+                    </ul>
                 </li>
             </ul>
-          </div>
         </div>
-    </nav>
+    </div>
+  </nav>  
 
     <!-- Perfil do usuário -->
 <div class="container light-style flex-grow-1 py-4">
@@ -63,7 +75,7 @@
                     <!-- Geral -->
                     <div class="tab-pane fade show active" id="account-general">
                         <div class="d-flex align-items-center mb-4">
-                            <img  id="foto-perfil"  src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="rounded-circle me-3" width="80">
+                            <img  id="foto-perfil"  src="../Home/imagens/user_icon.png" alt="Avatar" class="rounded-circle me-3" width="80">
                             <div>
                                 <label class="btn btn-outline-primary btn-sm">
                                     Carregar nova foto
@@ -157,12 +169,12 @@
         </div>
     </div>
   </footer>
-
     <!-- Link -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <!-- Link para a responsabilidade do NavBar -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src=""></script>
+    <script src="../Home/auth.js"></script>
+    <script src="../PerfilUsuario/script.js"></script>
 </body>
 
 </html>

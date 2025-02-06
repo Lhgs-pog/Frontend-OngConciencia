@@ -57,6 +57,17 @@
         width: 100%;
     }
 
+    /*  Imagem de perfil  */
+    .profile-image {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+    }
+    
+    #auth-menu, #user-menu {
+        display: none; /* Oculta os elementos antes da verificação */
+    }
+
 
 
 /*Area do formulário*/

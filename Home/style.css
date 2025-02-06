@@ -65,14 +65,14 @@
 
     /*  Imagem de perfil  */
     .profile-image {
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
         border-radius: 50%;
-        object-fit: cover;
     }
-
-    /*  Ocultar menu do usuário  */
     
+    #auth-menu, #user-menu {
+        display: none; /* Oculta os elementos antes da verificação */
+    }
 
 /* Carrosel */
     /*imagens*/
