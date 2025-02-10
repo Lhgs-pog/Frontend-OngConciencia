@@ -26,7 +26,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Verifica se o usuário está logado(parâmetro id enviado), se não envia para a página de Login
     if (!userId) {
         alert("Nenhum usuário logado!");
-        window.location.href = "../LoginCadastro/index.html";
+        //Temporraiamente desativado
+        //window.location.href = "../LoginCadastro/index.html";
         return;
     }
 
@@ -47,7 +48,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         //Preenche os campos do HTML com os dados do usuário
         document.getElementById("nome").value = userData.nome || "";
         document.getElementById("email").value = userData.email || "";
-        document.getElementById("foto-perfil").src = userData.foto || "https://bootdey.com/img/Content/avatar/avatar1.png";
+        document.getElementById("foto-perfil").src = userData.foto || "imagens/user_icon.png";
 
     } catch (error) {
         console.error(error);
@@ -60,15 +61,23 @@ document.addEventListener("DOMContentLoaded", async () => {
         const senha = document.getElementById("nova-senha").value;
         const fotoInput = document.querySelector("input[type='file']");
 
+        const userData = {
+            nome: nome,
+            email: email,
+            senha: senha,
+            roles: "user"
+        };
+
+        const foto = fotoInput.files[0];
+
         // Criar objeto FormData para envio multipart
         const formData = new FormData();
-        formData.append("id", userId);
-        if (nome) formData.append("nome", nome);
-        if (email) formData.append("email", email);
-        if (senha) formData.append("senha", senha);
-        //Verifica se o usuário selecionou uma foto
-        if (fotoInput.files.length > 0) {
-            formData.append("foto", fotoInput.files[0]); 
+         // Para enviar o JSON, encapsule-o em um Blob com o tipo "application/json"
+        formData.append('data', new Blob([JSON.stringify(userData)], { type: 'application/json' }));
+        if (foto) {
+            formData.append('foto', foto);
+        } else {
+            fotoData.append("foto", src="imagens/user_icon.png");
         }
 
         try {
@@ -77,41 +86,16 @@ document.addEventListener("DOMContentLoaded", async () => {
                 body: formData, // Enviando como FormData para suportar o arquivo
             });
 
-            if (!response.ok) throw new Error("Erro ao atualizar os dados");
+            if (!response.ok){
+                console.error(`Erro ao efetuar a requisição. Status: ${response.status}. Conteudo: ${response.body}`);
+                throw new Error("Erro ao atualizar os dados");
+            }
 
             alert("Dados atualizados com sucesso!");
             location.reload(); // Recarregar a página para atualizar os dados
         } catch (error) {
             console.error(error);
             alert("Falha ao atualizar os dados.");
-        }
-    });
-
-
-    //URL do método de atualizar Foto
-    const apiPhoto = `http://localhost:8080/user/foto`;
-
-    // Atualizar foto do usuário
-    document.querySelector("input[type='file']").addEventListener("change", async (event) => {
-        const file = event.target.files[0];
-        if (!file) return;
-
-        const formData = new FormData();
-        formData.append("email", document.getElementById("email").value);
-        formData.append("foto", file);
-
-        try {
-            const response = await fetch(apiPhoto, {
-                method: "PUT",
-                body: formData
-            });
-
-            if (!response.ok) throw new Error("Erro ao atualizar foto");
-            alert("Foto atualizada com sucesso!");
-            document.getElementById("foto-perfil").src = URL.createObjectURL(file);
-        } catch (error) {
-            console.error(error);
-            alert("Falha ao atualizar a foto.");
         }
     });
 
