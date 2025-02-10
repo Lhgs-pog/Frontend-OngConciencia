@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     */
     const btnPesquisarOng = document.getElementById('btn-pesquisa');
     btnPesquisarOng.addEventListener('click', () => {
-        const keyword = document.getElementById('pesquisa').value;
+        const keyword = document.getElementById('input-pesquisa').value;
 
         if(keyword.trim() !== ""){
             window.location.href = `../PesquisaOng/index.html?keyword=${encodeURIComponent(keyword)}`;

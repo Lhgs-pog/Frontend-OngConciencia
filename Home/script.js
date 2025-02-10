@@ -8,12 +8,12 @@ document.addEventListener('DOMContentLoaded', function(){
     */
     const btnPesquisarOng = document.getElementById('btn-pesquisa');
     btnPesquisarOng.addEventListener('click', () => {
-        const keyword = document.getElementById('pesquisa').value;
+        const keyword = document.getElementById('input-pesquisa').value;
 
         if(keyword.trim() !== ""){
             window.location.href = `../PesquisaOng/index.html?keyword=${encodeURIComponent(keyword)}`;
         }
-        console.error("A pesquisa não pode ser vaziaa");
+        console.error("A pesquisa não pode ser vazia");
     })
 
     /*
