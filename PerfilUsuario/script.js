@@ -64,11 +64,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         const userData = {
             nome: nome,
             email: email,
-            senha: senha,
-            roles: "user"
+            senha: senha
         };
 
         const foto = fotoInput.files[0];
+        
+        const token = sessionStorage.getItem("token");
+        console.log("Token carregado:", token);
 
         // Criar objeto FormData para envio multipart
         const formData = new FormData();
@@ -83,7 +85,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         try {
             const response = await fetch(apiUrl, {
                 method: "PUT",
-                body: formData, // Enviando como FormData para suportar o arquivo
+                headers: {
+                    "Authorization": `Bearer ${token}` //Autorização de token
+                },
+                body: formData // Enviando como FormData para suportar o arquivo
             });
 
             if (!response.ok){
