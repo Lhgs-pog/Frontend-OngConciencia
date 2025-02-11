@@ -31,6 +31,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
     }
 
+    //Token do usuário
+    const token = sessionStorage.getItem("token");
+    console.log("Token carregado:", token);
+
     //URL dos métodos PUT E GET
     const apiUrl = `http://localhost:8080/user/${userId}`;
 
@@ -38,7 +42,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
 
         // Requisição do GET
-        const response = await fetch(apiUrl, { method: "GET" });
+        const response = await fetch(apiUrl, { method: "GET",
+            headers:{
+                "Authorization": `Bearer ${token}`
+            }
+         });
         //Erro se não encontrar o usuário
         if (!response.ok) throw new Error("Erro ao buscar dados do usuário");
         //Dados do usuário
@@ -68,9 +76,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         };
 
         const foto = fotoInput.files[0];
-        
-        const token = sessionStorage.getItem("token");
-        console.log("Token carregado:", token);
 
         // Criar objeto FormData para envio multipart
         const formData = new FormData();

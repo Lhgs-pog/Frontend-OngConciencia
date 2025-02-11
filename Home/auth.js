@@ -1,8 +1,11 @@
-async function obterDadosUsuario(email) {
+async function obterDadosUsuario(token,email) {
     try {
         const response = await fetch(`http://localhost:8080/user/email/${encodeURIComponent(email)}`, {
             method: "GET",
-            headers: { "Content-Type": "application/json" }
+            headers: { 
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+             }
         });
 
         if (!response.ok) throw new Error("Erro ao buscar os dados do usuário.");
@@ -47,7 +50,7 @@ async function verificarAutenticacao() {
     }
 
     //Uusário existe, o email é enviado para requisição da API
-    const usuario = await obterDadosUsuario(email);
+    const usuario = await obterDadosUsuario(token,email);
     //Usuário existe!
     atualizarUI(usuario);
 }
