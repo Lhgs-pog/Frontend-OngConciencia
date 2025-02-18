@@ -76,8 +76,13 @@ function changeIcon(value){
         if (currentstep < 2) {
             currentstep++; // Avança para a próxima etapa
             showstep(currentstep); // Mostra a nova etapa
+
+            const email = document.getElementById('email').value.trim().replace(/^"|"$/g, '');
+            // Primeiro, gera o código e aguarda a conclusão
+            await genCode(email);
         } else {
-            //simula evento de envio
+            console.log("Enviado com sucesso!");
+            changePassword();
         }
     }
 
@@ -94,3 +99,49 @@ function changeIcon(value){
     // Torna as funções acessíveis no escopo global (necessário para os botões)
     window.nextStep = nextStep;
     window.prevStep = prevStep;
+
+    
+    // Função FETCH (Gerar Código)
+    async function genCode(email) {
+        try {
+            const response = await fetch("http://localhost:8080/user/codigo-senha", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(email) 
+            });
+    
+            if (response.ok) {
+                console.log("Código enviado para o email:", email);
+            } else {
+                throw new Error("Erro ao gerar o código!");
+            }
+        } catch (error) {
+            console.error("Erro:", error);
+        }
+    }
+
+    //Função de alterar a senha
+    async function changePassword(){
+        const email = document.getElementById("email").value;
+        const novaSenha = document.getElementById("senha").value;
+        const codigo = document.getElementById("codigo").value;
+
+        const user = {email, codigo, senha};
+
+
+        const response = await fetch("http://localhost:8080/usuario/senha", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user)
+        });
+
+        if (response.ok) {
+            console.log("Senha redefinida com sucesso!", email);
+        } else {
+            throw new Error("Erro ao redefinir a senha!");
+        }
+    }
