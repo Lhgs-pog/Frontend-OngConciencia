@@ -179,22 +179,37 @@ function changeIcon(value){
  */
 async function userAttempt(codeInserted) {
     try {
+        //Recupera os valores do formulário
         const name = document.getElementById('username').value;
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
+
+        // Criar objeto FormData para envio multipart
+        const formData = new FormData();
+
+        // Criar objeto user
         const user = {
-            nome: name, 
+            nome: name,
             email: email,
-            senha: password, 
+            senha: password
         };
 
-        const response = await fetch(`http://localhost:8080/user/${codeInserted}`, { 
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(user),
+        // Adicionar JSON como Blob ao FormData
+        formData.append("data", new Blob([JSON.stringify(user)], { type: "application/json" }));
+
+        // Adicionar o parâmetro tentativa
+        formData.append("tentativa", tentativa);
+
+        // Adicionar a imagem default
+        const responseImagem = await fetch("imagens/user_icon.png");
+        const blobImagem = await responseImagem.blob();
+        formData.append("foto", blobImagem, "user_icon.png");
+
+        // Enviar para o backend
+        const response = await fetch(`http://localhost:8080/user`, {
+            method: "POST",
+            body: formData // Removido Content-Type, pois ele é definido automaticamente para FormData
         });
 
         console.log("Status da resposta:", response.status);
