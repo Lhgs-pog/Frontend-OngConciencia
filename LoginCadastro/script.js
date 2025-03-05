@@ -195,21 +195,16 @@ async function userAttempt(codeInserted) {
             senha: password
         };
 
-        // Adicionar JSON como Blob ao FormData
+        // Adiciona o JSON como Blob ao FormData
         formData.append("data", new Blob([JSON.stringify(user)], { type: "application/json" }));
 
-        // Adicionar o parâmetro tentativa
-        formData.append("tentativa", tentativa);
+        // Adiciona o parâmetro tentativa (certifique-se de que a variável codeInserted está definida)
+        formData.append("tentativa", codeInserted);
 
-        // Adicionar a imagem default
-        const responseImagem = await fetch("imagens/user_icon.png");
-        const blobImagem = await responseImagem.blob();
-        formData.append("foto", blobImagem, "user_icon.png");
-
-        // Enviar para o backend
-        const response = await fetch(`http://localhost:8080/user`, {
+        // Envia para o backend
+        const response = await fetch("http://localhost:8080/user", {
             method: "POST",
-            body: formData // Removido Content-Type, pois ele é definido automaticamente para FormData
+            body: formData // Não defina manualmente o header 'Content-Type'
         });
 
         console.log("Status da resposta:", response.status);
@@ -221,7 +216,7 @@ async function userAttempt(codeInserted) {
         } else {
             const errorText = await response.text(); // Captura o erro detalhado da API
             console.error('Erro na tentativa de validação:', errorText);
-            throw new Error(`Erro na tentativa de validação - Status: ${response.status} - Detalhes: ${errorText}`);
+            throw new Error(`Erro na tentativa de validação - Status: ${response.status}- Body: ${response.text} - Detalhes: ${errorText}`);
         }
     } catch (error) {
         console.error('Erro:', error);
